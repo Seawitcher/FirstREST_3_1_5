@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,19 +49,20 @@ public class AdminRESTController {
         return new ResponseEntity<> (user, HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/userAuth")
     public ResponseEntity<User> showAuthUser(Authentication authentication) {
         User user = (User) authentication.getPrincipal();
         return new ResponseEntity<> (user, HttpStatus.OK);
     }
 
-    @PostMapping("/newAddUserAdmin")
-    public String saveNewUser(
-            @ModelAttribute("user") User user
+    @PostMapping("/newAddUser")
+    public ResponseEntity<HttpStatus> saveNewUser(
+            @RequestBody User user
             ) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         userService.add(user);
-        return "redirect:/admin";
+        return new ResponseEntity<> (HttpStatus.OK);
     }
 
     @DeleteMapping("{id}/delete")
