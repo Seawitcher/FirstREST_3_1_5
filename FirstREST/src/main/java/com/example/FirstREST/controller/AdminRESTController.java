@@ -37,17 +37,22 @@ public class AdminRESTController {
         this.roleService = roleService;
         this.passwordEncoder = passwordEncoder;
     }
-@GetMapping
+    @GetMapping
     public ResponseEntity<List<User>> showUsers() {
         List <User> listAllUsers = userService.getList();
         return new ResponseEntity<>(listAllUsers, HttpStatus.OK);
     }
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> showUser(@PathVariable("id") Long id) {
         User user = userService.getUser(id);
         return new ResponseEntity<> (user, HttpStatus.OK);
     }
 
+    @GetMapping
+    public ResponseEntity<User> showAuthUser(Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+        return new ResponseEntity<> (user, HttpStatus.OK);
+    }
 
     @PostMapping("/newAddUserAdmin")
     public String saveNewUser(
