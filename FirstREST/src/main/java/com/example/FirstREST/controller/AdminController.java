@@ -48,27 +48,4 @@ public class AdminController {
         return "admin_section";
     }
 
-    @PostMapping("/newAddUserAdmin")
-    public String saveNewUser(
-            @ModelAttribute("user") User user
-            ) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userService.add(user);
-        return "redirect:/admin";
-    }
-
-    @DeleteMapping("{id}/delete")
-    public String deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUser(id);
-        return "redirect:/admin";
-    }
-
-
-    @PutMapping("/{id}/editUser")
-    public String userSaveEdit(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userService.editUser(user);
-        return "redirect:/admin";
-    }
-
 }

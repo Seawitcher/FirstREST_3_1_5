@@ -44,7 +44,7 @@ public class AdminRESTController {
         List <User> listAllUsers = userService.getList();
         return new ResponseEntity<>(listAllUsers, HttpStatus.OK);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/editUser/{id}")
     public ResponseEntity<User> showUser(@PathVariable("id") Long id) {
         User user = userService.getUser(id);
         return new ResponseEntity<> (user, HttpStatus.OK);
@@ -73,7 +73,7 @@ public class AdminRESTController {
     }
 
 
-    @PatchMapping("/editUser/{id}")
+    @PutMapping("/editUser/{id}")
     public ResponseEntity<HttpStatus> userSaveEdit(@RequestBody User user, @PathVariable("id") Long id) {
         user.setId(id);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
