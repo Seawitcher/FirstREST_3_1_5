@@ -28,13 +28,13 @@ function loadTableData(listAllUser) {
     <td>${roles}</td>
     <td>
         <button class="btn btn-primary" data-bs-toogle="modal"
-        data-bs-target="#editUser" 
-        onclick="editUserData(${user.id})">Edit</button>
+        data-bs-target="#editModal" 
+        onclick="editModalData(${user.id})">Edit</button>
     </td>
         <td>
         <button class="btn btn-danger" data-bs-toogle="modal"
-        data-bs-target="#deleteUser" 
-        onclick="deleteUserData(${user.id})">Delete</button>
+        data-bs-target="#deleteModal" 
+        onclick="deleteModalData(${user.id})">Delete</button>
     </td>
 </tr>`
     }

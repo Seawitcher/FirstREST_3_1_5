@@ -6,12 +6,12 @@ const age_ed = document.getElementById('age_ed');
 const email_ed = document.getElementById('email_ed');
 const password_ed = document.getElementById('password_ed');
 
-async function editUserData(id) {
+async function editModalData(id) {
     const  urlDataEd = 'api/admin/editUser/' + id;
-    let userPageEd = await fetch(urlDataEd);
-    if (userPageEd.ok) {
+    let usersPageEd = await fetch(urlDataEd);
+    if (usersPageEd.ok) {
         let userData =
-            await userPageEd.json().then(user => {
+            await usersPageEd.json().then(user => {
                 id_ed.value = `${user.id}`;
                 name_ed.value = `${user.name}`;
                 lastname_ed.value = `${user.lastname}`;
@@ -20,7 +20,7 @@ async function editUserData(id) {
                 password_ed.value = `${user.password}`;
             })
     } else {
-        alert(`Error, ${userPageEd.status}`)
+        alert(`Error, ${usersPageEd.status}`)
     }
 }
 async function editUser() {

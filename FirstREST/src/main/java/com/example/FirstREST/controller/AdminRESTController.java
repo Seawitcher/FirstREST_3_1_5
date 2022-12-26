@@ -66,10 +66,10 @@ public class AdminRESTController {
         return new ResponseEntity<> (HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}/delete")
-    public String deleteUser(@PathVariable("id") Long id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
-        return "redirect:/admin";
+        return new ResponseEntity<> (HttpStatus.OK);
     }
 
 

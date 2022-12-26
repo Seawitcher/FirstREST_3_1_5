@@ -97,6 +97,9 @@
 
                                 </table>
                                 <!--Конец таблицы-->
+
+
+
                             </div>
                             <!-- Конец первой панели с таблицей All Users-->
                             <!--Начало второй панели с add new Usera-->
@@ -158,26 +161,33 @@
             </div>
         </div>
     </div>
-    <div class="row">
+
+
+<div class="row">
         <div class="col-sm-12">
         </div>
     </div>
+
+
 </div>
-
 <!--Начало Модальное окно изменения пользователя-->
-<div class="modal fade"  id = "editUser"  tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade"  id ="editModal">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" >Edit user</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
 
-                <!--                                                            Начало Тело Модальной-->
-                <form id="formForEditing"  >
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenteredLabel">Edit user</h5>
+                    <span class="btn-close" data-bs-dismiss="modal"
+                          aria-label="Close"></span>
+                </div>
+
+                <div class="modal-body">
+
+                    <!--                                                            Начало Тело Модальной-->
+                    <form id="formForEditing">
+
+
                     <div class="form-group">
                         <label class="row font-weight-bold justify-content-center" for="id_ed">ID </label>
                         <input name="id_ed" th:type="text" class="form-control"  id="id_ed" readonly/>
@@ -218,11 +228,12 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="editCloseBtn"
                         >Close</button>
                         <button type="button" class="btn btn-primary" id="editBtn"
-                        onclick="editUser(); getAdminPage()">Edit</button>
+                                onclick="editUser(); getAdminPage()">Edit</button>
                     </div>
 
-                </form>
-            </div>
+                    </form>
+                </div>
+
         </div>
     </div>
 </div>
@@ -241,7 +252,7 @@
         integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
         crossorigin="anonymous"></script>
 <script th:src="@{/adminJs/adminPage.js}"></script>
-<script th:src="@{/adminJs/editUserPage.js}"></script>
+<script th:src="@{/adminJs/editModalPage.js}"></script>
 </body>
 </html>
 
