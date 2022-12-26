@@ -6,7 +6,9 @@ const age_ed = document.getElementById('age_ed');
 const email_ed = document.getElementById('email_ed');
 const password_ed = document.getElementById('password_ed');
 
+
 async function editModalData(id) {
+    $('#editModal').modal('show');
     const  urlDataEd = 'api/admin/editUser/' + id;
     let usersPageEd = await fetch(urlDataEd);
     if (usersPageEd.ok) {
@@ -24,7 +26,7 @@ async function editModalData(id) {
     }
 }
 async function editUser() {
-    let urlEdit = 'api/admin/editUser' + id_ed.value;
+    let urlEdit = 'api/admin/editUser/' + id_ed.value;
     let listOfRole = [];
     for (let i=0; i<form_ed.rolesForEditing.options.length; i++) {
         if (form_ed.rolesForEditing.options[i].selected) {
@@ -32,7 +34,7 @@ async function editUser() {
         }
     }
     let method = {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
             "Content-Type": "application/json"
         },
