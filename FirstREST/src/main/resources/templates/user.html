@@ -12,7 +12,6 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 
 </head>
@@ -22,7 +21,6 @@
     <div class="row">
         <div class="col-sm-12">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
-
                 <li class="list-inline-item"><h4 th:text="${admin.getEmail()}"></h4></li>
                 <li class="list-inline-item"><h4 th:text="' with roles: ' + ${admin.getRoleString()}"></h4></li>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -31,7 +29,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto"> </ul>
-
                     <a class="navbar-brand" href="/logout">Logout</a>
 
                 </div>
@@ -54,7 +51,6 @@
                     >Admin</a>
                     <a type="button" class="btn btn-block disabled btn-outline-primary" href="/user"
                     >User</a>
-
                 </div>
                 <!--Боковая левая панель конец-->
 
@@ -78,14 +74,13 @@
 
                             <!--Конец таблицы-->
                             <!--Боковая правая панель конец-->
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-sm-12">
         </div>

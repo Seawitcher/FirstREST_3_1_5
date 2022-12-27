@@ -151,10 +151,6 @@ public class User implements UserDetails {
         return roles;
     }
 
-//    public void setRoles(List<Role> roles) {
-//        this.roles = roles;
-//    }
-
     public void setRoles(String[] roles) {
         List<Role> roleSet = new ArrayList<>();
         for (String role : roles) {
@@ -169,17 +165,7 @@ public class User implements UserDetails {
         }
         this.roles = roleSet;
     }
-    public String convertSetOfRoleToString(List<Role> roles) {
-        StringBuilder sb = new StringBuilder();
-        for (Role role : roles) {
-            if (role.getName().contains("ROLE_ADMIN")) {
-                sb.append("ADMIN");
-            } else if (role.getName().contains("ROLE_USER")) {
-                sb.append("USER");
-            }
-        }
-        return sb.toString();
-    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

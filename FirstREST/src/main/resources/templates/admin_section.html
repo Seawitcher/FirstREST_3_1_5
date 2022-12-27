@@ -73,7 +73,8 @@
                                     user</a>
                             </li>
                         </ul>
-                        <!--                            Начало клавишь All Users and Add new user-->
+
+                        <!--Начало клавишь All Users and Add new user-->
                         <div class="tab-content">
                             <div class="tab-pane" id="tab1">
                                 <h4>All users</h4>
@@ -93,60 +94,51 @@
                                     </thead>
                                     <tbody id="tbody">
                                     </tbody>
-
-
                                 </table>
                                 <!--Конец таблицы-->
-
-
-
                             </div>
                             <!-- Конец первой панели с таблицей All Users-->
+
                             <!--Начало второй панели с add new Usera-->
                             <div class="tab-pane active" id="tab2" aria-expanded="true">
                                 <h4>Add new user</h4>
-                                <!--  Начало Тело Модальной-->
-                                <form th:method="POST" th:action= "@{/admin/newAddUserAdmin}" th:object="${user}"  >
 
+                                <!--  Начало Тело Модальной-->
+                                <form class="text-center" role="form"  id="formForNewUser">
                                     <div class="container col-md-6">
                                         <label class="row font-weight-bold justify-content-center" for="name">Name</label>
-                                        <input th:name="name" th:type="text" class="form-control" th:value="${name}" id="name_new_user" placeholder="Name"/>
+                                        <input name="name" th:type="text" class="form-control" id="name" placeholder="Name"/>
                                     </div>
                                     <div class="container col-md-6">
                                         <label class="row font-weight-bold justify-content-center" for="lastname">Last name</label>
-                                        <input th:name="lastname" th:type="text" class="form-control" th:value="${lastname}" id="lastname_new_user" placeholder="Last name"/>
+                                        <input name="lastname" th:type="text" class="form-control" id="lastname" placeholder="Last name"/>
                                     </div>
                                     <div class="container col-md-6">
                                         <label class="row font-weight-bold justify-content-center" for="age">Age</label>
-                                        <input th:name="age" th:type="number" class="form-control" th:value="${age}" id="age_new_user" placeholder="Age"/>
+                                        <input name="age" th:type="number" class="form-control"  id="age" placeholder="Age"/>
                                     </div>
                                     <div class="container col-md-6">
                                         <label class="row font-weight-bold justify-content-center" for="email">Email</label>
-                                        <input th:name="email" th:type="text" class="form-control" th:value="${email}" id="email_new_user" placeholder="Email"/>
+                                        <input name="email" th:type="text" class="form-control" id="email" placeholder="Email"/>
                                     </div>
                                     <div class="container col-md-6">
                                         <label class="row font-weight-bold justify-content-center" for="password">Password</label>
-                                        <input th:name="password" th:type="text" class="form-control" th:value="${password}" id="password_new_user" placeholder="Password"/>
+                                        <input name="password" th:type="text" class="form-control" id="password" placeholder="Password"/>
                                     </div>
                                     <div class="container col-md-6">
-                                    <label class="row font-weight-bold justify-content-center" for="roles">Role</label>
-                                    <select multiple class="form-control" size="2"  id="roles_new_user" name="roles">
+                                        <label class="row font-weight-bold justify-content-center" for="roles">Role</label>
+                                        <select multiple class="form-control" size="2"  id="roles" name="roles">
 
-                                        <option
-                                                th:each="roles : ${roleList}"
-                                                th:text="${roles.getNoPrefix()}"
-                                                th:value = "${roles.id}"
-                                                th:selected="${user.roles.contains(roles)}"
-                                        > </option>
-                                    </select>
+                                            <option id="roleNewUser" value="USER">USER</option>
+                                            <option id="roleNewAdmin" value="ADMIN">ADMIN</option>
+                                        </select>
                                     </div>
-
                                         <br>
+
                                     <div class="container text-center col-md-6">
-
-                                        <button type="submit" class="btn btn-success btn-lg">Add new user</button>
+                                        <button type="submit" class="btn btn-success btn-lg" id="signup-submit"
+                                                form="formForNewUser" onclick="newUser()">Add new user</button>
                                     </div>
-
                                 </form>
                                 <!--  Конец тела окна-->
 
@@ -167,14 +159,13 @@
         <div class="col-sm-12">
         </div>
     </div>
-
-
 </div>
+
+
 <!--Начало Модальное окно изменения пользователя-->
 <div class="modal fade"  id ="editModal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenteredLabel">Edit user</h5>
@@ -184,10 +175,8 @@
 
                 <div class="modal-body">
 
-                    <!--                                                            Начало Тело Модальной-->
+                    <!-- Начало Тело Модальной-->
                     <form id="formForEditing">
-
-
                     <div class="form-group">
                         <label class="row font-weight-bold justify-content-center" for="id_ed">ID </label>
                         <input name="id" th:type="text" class="form-control"  id="id_ed" readonly/>
@@ -213,16 +202,13 @@
                         <input name="password" th:type="text" class="form-control" id="password_ed"/>
                     </div>
 
-
-
                     <label class="row font-weight-bold justify-content-center" for="rolesForEditing">Role</label>
                     <select multiple class="form-control" size="2"  id="rolesForEditing" name="rolesForEditing">
-
                         <option id="roleUser" value="USER">USER</option>
                         <option id="roleAdmin" value="ADMIN">ADMIN</option>
                     </select>
 
-                    <!--                                                                Конец тела окна-->
+                    <!-- Конец тела окна-->
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="editCloseBtn"
@@ -230,19 +216,17 @@
                         <button type="button" class="btn btn-primary" id="editBtn"
                                 onclick="editUser(); getAdminPage()">Edit</button>
                     </div>
-
                     </form>
                 </div>
-
         </div>
     </div>
 </div>
 <!--Конец Модальное окно изменения пользователя-->
+
 <!--Начало Модальное окно удаления пользователя-->
 <div class="modal fade"  id ="deleteModal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-
 
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenteredLabelDelete">Delete user</h5>
@@ -252,10 +236,8 @@
 
             <div class="modal-body">
 
-                <!--                                                            Начало Тело Модальной-->
+                <!-- Начало Тело Модальной-->
                 <form id="formForDeleting">
-
-
                     <div class="form-group">
                         <label class="row font-weight-bold justify-content-center" for="id_del">ID </label>
                         <input name="id" th:type="text" class="form-control"  id="id_del" readonly/>
@@ -280,17 +262,13 @@
                         <label class="row font-weight-bold justify-content-center" for="password_del">Password</label>
                         <input name="password" th:type="text" class="form-control" id="password_del" readonly/>
                     </div>
-
-
-
                     <label class="row font-weight-bold justify-content-center" for="rolesForDeleting">Role</label>
                     <select multiple class="form-control" size="2"  id="rolesForDeleting" name="rolesForEditing" readonly>
-
                         <option  value="USER">USER</option>
                         <option  value="ADMIN">ADMIN</option>
                     </select>
 
-                    <!--                                                                Конец тела окна-->
+                    <!--  Конец тела окна-->
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="deleteCloseBtn"
@@ -298,10 +276,8 @@
                         <button type="submit" class="btn btn-primary" id="deleteBtn"
                                 onclick="deleteUser(); getAdminPage()">Delete</button>
                     </div>
-
                 </form>
             </div>
-
         </div>
     </div>
 </div>
@@ -322,6 +298,7 @@
 <script th:src="@{/adminJs/adminPage.js}"></script>
 <script th:src="@{/adminJs/editModalPage.js}"></script>
 <script th:src="@{/adminJs/deleteModalPage.js}"></script>
+<script th:src="@{/adminJs/newUserPage.js}"></script>
 </body>
 </html>
 
