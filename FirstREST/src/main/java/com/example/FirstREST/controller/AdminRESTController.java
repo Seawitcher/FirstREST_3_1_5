@@ -44,7 +44,7 @@ public class AdminRESTController {
         List <User> listAllUsers = userService.getList();
         return new ResponseEntity<>(listAllUsers, HttpStatus.OK);
     }
-    @GetMapping("/editUser/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<User> showUser(@PathVariable("id") Long id) {
         User user = userService.getUser(id);
         return new ResponseEntity<> (user, HttpStatus.OK);
@@ -66,14 +66,14 @@ public class AdminRESTController {
         return new ResponseEntity<> (HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/users/{id}")
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return new ResponseEntity<> (HttpStatus.OK);
     }
 
 
-    @PatchMapping("/editUser/{id}")
+    @PatchMapping("/users/{id}")
     public ResponseEntity<HttpStatus> userSaveEdit(@RequestBody User user, @PathVariable("id") Long id) {
         user.setId(id);
         user.setPassword(passwordEncoder.encode(user.getPassword()));

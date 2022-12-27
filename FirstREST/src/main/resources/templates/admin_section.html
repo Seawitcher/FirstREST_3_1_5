@@ -238,6 +238,74 @@
     </div>
 </div>
 <!--Конец Модальное окно изменения пользователя-->
+<!--Начало Модальное окно удаления пользователя-->
+<div class="modal fade"  id ="deleteModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenteredLabelDelete">Delete user</h5>
+                <span class="btn-close" data-bs-dismiss="modal"
+                      aria-label="Close"></span>
+            </div>
+
+            <div class="modal-body">
+
+                <!--                                                            Начало Тело Модальной-->
+                <form id="formForDeleting">
+
+
+                    <div class="form-group">
+                        <label class="row font-weight-bold justify-content-center" for="id_del">ID </label>
+                        <input name="id" th:type="text" class="form-control"  id="id_del" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label class="row font-weight-bold justify-content-center" for="name_del">Name </label>
+                        <input name="name" th:type="text" class="form-control"  id="name_del" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label class="row font-weight-bold justify-content-center" for="lastname_del">Last name</label>
+                        <input name="lastname" th:type="text" class="form-control" id="lastname_del" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label class="row font-weight-bold justify-content-center" for="age_del">Age</label>
+                        <input name="age" th:type="number" class="form-control" id="age_del" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label class="row font-weight-bold justify-content-center" for="email_del">Email</label>
+                        <input name="email" th:type="text" class="form-control"  id="email_del" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label class="row font-weight-bold justify-content-center" for="password_del">Password</label>
+                        <input name="password" th:type="text" class="form-control" id="password_del" readonly/>
+                    </div>
+
+
+
+                    <label class="row font-weight-bold justify-content-center" for="rolesForDeleting">Role</label>
+                    <select multiple class="form-control" size="2"  id="rolesForDeleting" name="rolesForEditing" readonly>
+
+                        <option  value="USER">USER</option>
+                        <option  value="ADMIN">ADMIN</option>
+                    </select>
+
+                    <!--                                                                Конец тела окна-->
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="deleteCloseBtn"
+                        >Close</button>
+                        <button type="submit" class="btn btn-primary" id="deleteBtn"
+                                onclick="deleteUser(); getAdminPage()">Delete</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--Конец Модальное окно изменения пользователя-->
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -253,6 +321,7 @@
         crossorigin="anonymous"></script>
 <script th:src="@{/adminJs/adminPage.js}"></script>
 <script th:src="@{/adminJs/editModalPage.js}"></script>
+<script th:src="@{/adminJs/deleteModalPage.js}"></script>
 </body>
 </html>
 

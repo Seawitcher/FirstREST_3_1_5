@@ -9,7 +9,7 @@ const password_ed = document.getElementById('password_ed');
 
 async function editModalData(id) {
     $('#editModal').modal('show');
-    const  urlDataEd = 'api/admin/editUser/' + id;
+    const  urlDataEd = 'api/admin/users/' + id;
     let usersPageEd = await fetch(urlDataEd);
     if (usersPageEd.ok) {
         let userData =
@@ -26,7 +26,7 @@ async function editModalData(id) {
     }
 }
 async function editUser() {
-    let urlEdit = 'api/admin/editUser/' + id_ed.value;
+    let urlEdit = 'api/admin/users/' + id_ed.value;
     let listOfRole = [];
     for (let i=0; i<form_ed.rolesForEditing.options.length; i++) {
         if (form_ed.rolesForEditing.options[i].selected) {
